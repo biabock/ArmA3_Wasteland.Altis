@@ -217,15 +217,6 @@ if (!isNil "_itemEntry") then
 					_description = "Thermally insulated";
 				};
 			};
-				case "binoc":
-				{
-				_currentBinoc = binocular player;
-
-				if (_itemType == "Laserdesignator") then
-				{
-					_description = "THERMAL NOT WORKING<br/>Will be fixed soon.";
-				};
-			};
 			default
 			{
 				switch (true) do
