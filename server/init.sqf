@@ -12,7 +12,7 @@
 
 if (!isServer && hasInterface) exitWith {};
 
-externalConfigFolder = "\A3Wasteland_settings";
+externalConfigFolder = "\a3wasteland_settings";
 
 if (isServer) then
 {
@@ -543,8 +543,5 @@ if (["A3W_serverMissions"] call isConfigOn) then
 	[] execVM "server\missions\masterController.sqf";
 };
 
-if !(["A3W_hcObjCleanup"] call isConfigOn) then
-{
-	// Start clean-up loop
-	execVM "server\WastelandServClean.sqf";
-};
+// Start clean-up loop
+[] execVM "server\WastelandServClean.sqf";

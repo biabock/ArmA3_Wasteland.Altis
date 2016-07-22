@@ -7,7 +7,7 @@
 if (!isServer) exitWith {};
 
 params ["_UID", "_player"];
-private ["_result", "_data", "_location", "_dataTemp", "_ghostingTimer", "_secs", "_columns", "_pvar", "_pvarG"];
+private ["_result", "_data", "_location", "_dataTemp", "_ghostingTimer", "_secs", "_columns", "_pvar", "_pvarG", "_supporterLevel"];
 
 private _moneySaving = ["A3W_moneySaving"] call isConfigOn;
 private _crossMap = ["A3W_extDB_playerSaveCrossMap"] call isConfigOn;
@@ -16,6 +16,8 @@ private _mapID = call A3W_extDB_MapID;
 
 private _query = [["checkPlayerSave", _UID, _mapID], ["checkPlayerSaveXMap", _UID, _environment]] select _crossMap;
 _result = ([_query, 2] call extDB_Database_async) param [0,false];
+
+_supporterLevel = (["getPlayerSupporterLevel:" + _UID, 2] call extDB_Database_async) param [0,0,[0]];
 
 if (!_result) then
 {
@@ -66,7 +68,10 @@ else
 		"BackpackMagazines",
 
 		"WastelandItems",
-
+		
+		"UniformTexture",
+		"BackpackTexture",
+		
 		"Hunger",
 		"Thirst"
 	];
@@ -103,6 +108,7 @@ else
 
 	_dataTemp = _data;
 	_data = [["PlayerSaveValid", true]];
+	_data = [["PlayerSaveValid", true], ["SupporterLevel", _supporterLevel]];
 
 	_ghostingTimer = ["A3W_extDB_GhostingTimer", 5*60] call getPublicVar;
 
@@ -149,6 +155,7 @@ if (["A3W_atmBounties"] call isConfigOn) then
 _data append
 [
 	["BankMoney", _bank],
+	["SupporterLevel", _supporterLevel],
 	["Bounty", _bounty],
 	["BountyKills", _bountyKills]
 ];

@@ -16,7 +16,7 @@ while {true} do
 	currentDate = date;
 	publicVariable "currentDate";
 
-	if (daytime >= [19,18] select (worldName == "Tanoa") || daytime < [5,7] select (worldName == "Tanoa")) then
+	if (daytime >= [19,18] select (worldName == "Altis") || daytime < [5,7] select (worldName == "Altis")) then
 	{
 		if (timeMultiplier != _timeMultiNight) then
 		{

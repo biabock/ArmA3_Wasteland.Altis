@@ -7,6 +7,8 @@
 
 #include "gui_defines.hpp"
 
+_supporterLevel = player getVariable ["SupporterLevel", 0];
+
 #define ERR_NOT_ENOUGH_FUNDS "You don't have enough money."
 #define ERR_MAX_BALANCE "Your account has reached the maximum balance."
 
@@ -29,7 +31,19 @@ if (player getVariable ["cmoney", 0] < _amount) exitWith
 };
 
 _balance = player getVariable ["bmoney", 0];
-_maxBalance = ["A3W_atmMaxBalance", 1000000] call getPublicVar;
+
+if (_supporterLevel <= 0) then
+{
+	_maxBalance = ["A3W_atmMaxBalance", 1000000] call getPublicVar;
+};
+if (_supporterLevel == 1) then
+{
+	_maxBalance = 4000000;
+};
+if (_supporterLevel >= 2) then
+{
+	_maxBalance = 6000000;
+};
 
 if (_balance + _amount > _maxBalance) then
 {

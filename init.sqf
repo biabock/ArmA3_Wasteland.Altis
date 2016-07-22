@@ -29,8 +29,8 @@ X_Client = false;
 X_JIP = false;
 
 CHVD_allowTerrain = false;
-CHVD_maxView = 3000; // Set maximum view distance (default: 12000)
-CHVD_maxObj = 3000; // Set maximimum object view distance (default: 12000)
+CHVD_maxView = 4000; // Set maximum view distance (default: 12000)
+CHVD_maxObj = 4000; // Set maximimum object view distance (default: 12000)
 
 // versionName = ""; // Set in STR_WL_WelcomeToWasteland in stringtable.xml
 
@@ -98,6 +98,11 @@ if (hasInterface || isServer) then
 	[] execVM "addons\JumpMF\init.sqf";
 	[] execVM "addons\outlw_magrepack\MagRepack_init.sqf";
 	[] execVM "addons\lsd_nvg\init.sqf";
+	[] execVM "addons\scripts\HvT.sqf";                       // High Value Target
+	//[] execVM "addons\scripts\HvD.sqf";                       // High Value Drugrunner
+	[] execVM "addons\Grenades\ToxicGas.sqf"; // Toxic Gas Grenades
+	[] execVM "addons\laptop\init.sqf"; //Hacker Mission
+	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf"; //Airdrop Assistance
 	[] execVM "addons\stickyCharges\init.sqf";
 	if (isNil "drn_DynamicWeather_MainThread") then { drn_DynamicWeather_MainThread = [] execVM "addons\scripts\DynamicWeatherEffects.sqf" };
 };

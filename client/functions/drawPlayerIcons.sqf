@@ -8,9 +8,9 @@
 
 if (!hasInterface) exitWith {};
 
-#define ICON_fadeDistance 1250
-#define ICON_limitDistance 2000
-#define ICON_sizeScale 0.75
+#define ICON_fadeDistance 1500
+#define ICON_limitDistance 2500
+#define ICON_sizeScale 0.4
 
 #define MINE_ICON_MAX_DISTANCE 200 // 200 is Arma 3 default for mine detector
 
@@ -71,7 +71,7 @@ drawPlayerIcons_thread = [] spawn
 		};
 	} forEach _mineColor;
 
-	_noBuiltInThermal = ["A3W_disableBuiltInThermal"] call isConfigOn;
+	//_noBuiltInThermal = ["A3W_disableBuiltInThermal"] call isConfigOn; //NOT WORKING RIGHT
 
 	private ["_dist"];
 
@@ -186,7 +186,7 @@ drawPlayerIcons_thread = [] spawn
 				} forEach detectedMines playerSide;
 			};
 
-			if (_noBuiltInThermal || (currentWeapon player) select [0,15] == "Laserdesignator") then
+			/*if (_noBuiltInThermal || (currentWeapon player) select [0,15] == "Laserdesignator") then
 			{
 				_thermalActive = currentVisionMode player isEqualTo 2;
 
@@ -223,7 +223,7 @@ drawPlayerIcons_thread = [] spawn
 						};
 					};
 				};
-			};
+			};*/
 		};
 
 		drawPlayerIcons_array = _newArray;
